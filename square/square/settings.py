@@ -70,6 +70,10 @@ TEMPLATES = [
     },
 ]
 
+GRAPHENE = {
+        'SCHEMA': 'app.schema.schema'
+} 
+
 WSGI_APPLICATION = 'square.wsgi.application'
 
 
