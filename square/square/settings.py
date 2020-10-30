@@ -26,7 +26,9 @@ SECRET_KEY = '^uw#g*@#19iv81!5c07y#1=&$c@c23g1#wbu2zmttpv8zu-8s-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+CORS_ORIGIN_ALLOW_ALL = True
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,16 +42,25 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'graphene_django',
     'app',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+# Add CORS_ORIGIN_WHITELIST to allow these domains be authorized to make cross-site HTTP requests
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000"
+    # your React App domain
 ]
 
 ROOT_URLCONF = 'square.urls'
