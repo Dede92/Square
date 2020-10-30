@@ -8,3 +8,4 @@ class Sensor(models.Model):
 
 class PeopleCounter(models.Model):
     sensor = models.CharField(max_length=256)
+    name = models.CharField(max_length=256)
