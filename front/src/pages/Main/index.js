@@ -22,7 +22,7 @@ const styles = (theme) => ({
   });
 
 function MainPage() {
-  const [roomValue, setRoomValue] = useState('')
+  const [roomValue, setRoomValue] = useState('stand_by')
   const [user, setUser] = useState({})
   const [createSeat] = useMutation(ADD_PEOPLE_TO_ROOM);
   const [editSeat] = useMutation(EDIT_PEOPLE);
@@ -35,7 +35,7 @@ function MainPage() {
   useEffect(() => {
     const id = uuid()
     setUser({id})
-    createSeat({ variables: {room: roomValue, peopleId: id, status: 0}})
+    createSeat({ variables: {room: roomValue, peopleId: id, status: 1}})
   }, []);
 
   const handleBeforeUnload = (event) => {

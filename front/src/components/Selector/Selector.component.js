@@ -28,7 +28,7 @@ const SelectorComponent = (props) => {
         value={roomValue}
         onChange={handleRoomValue}
       >
-        <MenuItem value="None">None</MenuItem>
+        <MenuItem value="stand_by">StandBy</MenuItem>
         <MenuItem value="room_a">Room A</MenuItem>
         <MenuItem value="room_b">Room B</MenuItem>
         <MenuItem value="room_c">Room C</MenuItem>
