@@ -17,19 +17,21 @@ const useStyles = makeStyles((theme) => ({
 
 const SelectorComponent = (props) => {
   const classes = useStyles();
-  const {age, handleChange} = props;
+  const {sensorValue, handleSensorValue} = props;
+
   return (
     <FormControl className={classes.formControl}>
-      <InputLabel id="demo-simple-select-label">Age</InputLabel>
+      <InputLabel id="select-sensor">Sensor</InputLabel>
       <Select
-        labelId="demo-simple-select-label"
+        labelId="simple-select-label"
         id="demo-simple-select"
-        value={age}
-        onChange={handleChange}
+        value={sensorValue}
+        onChange={handleSensorValue}
       >
-        <MenuItem value={10}>Ten</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
+        <MenuItem value="None">None</MenuItem>
+        <MenuItem value="room_a">Room A</MenuItem>
+        <MenuItem value="room_b">Room B</MenuItem>
+        <MenuItem value="room_c">Room C</MenuItem>
       </Select>
     </FormControl>
   )
