@@ -6,6 +6,7 @@ import ADD_PEOPLE_TO_ROOM from 'mutations/addPeopleToRoom';
 import EDIT_PEOPLE from 'mutations/editPeople';
 import uuid from 'react-uuid';
 import SelectorComponent from 'components/Selector';
+import { Beforeunload } from 'react-beforeunload';
 
 const styles = (theme) => ({
     root: {
@@ -37,8 +38,13 @@ function MainPage() {
     createSeat({ variables: {room: roomValue, peopleId: id, status: 0}})
   }, []);
 
+  const handleBeforeUnload = () => {
+    editSeat({variables: {room: roomValue, peopleId: user.id, status: 0}});
+  }
+
   return (
     <React.Fragment>
+      <Beforeunload onBeforeunload={() => handleBeforeUnload} />
       <SelectorComponent roomValue={roomValue} handleRoomValue={handleRoomValue}/>
       <GetOccupancy room={roomValue}/>
     </React.Fragment>
