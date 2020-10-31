@@ -14,4 +14,4 @@ class Query(graphene.ObjectType):
         return PeopleCounter.objects.all()
 
     def resolve_get_people_counter(self, info, **kwargs):
-        return PeopleCounter.objects.filter(room=kwargs['room']).count()
+        return PeopleCounter.objects.filter(room=kwargs['room'], status=1).count()
