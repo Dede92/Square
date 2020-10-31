@@ -1,6 +1,6 @@
 import graphene
-from .models import Sensor, PeopleCounter
-from .types import SensorType, PeopleCounterType
+from .models import PeopleCounter
+from .types import PeopleCounterType
 
 class CreateSeat(graphene.Mutation):
     room = graphene.String(required=True, default_value=None)

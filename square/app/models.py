@@ -2,10 +2,6 @@ from django.db import models
 import uuid
 # Create your models here.
 
-class Sensor(models.Model):
-    label = models.CharField(max_length=256)
-
-
 class PeopleCounter(models.Model):
     room = models.CharField(max_length=256)
     people_id = models.CharField(max_length=256, primary_key=True, default=uuid.uuid4())
