@@ -13,7 +13,6 @@ class Query(graphene.ObjectType):
     def resolve_get_people_counter(self, info, **kwargs):
         print(kwargs['room'])
         a = PeopleCounter.objects.filter(room=kwargs['room']).aggregate(num_in=Sum('status_in'), num_out=Sum('status_out'))
-        print(a)
         return {
             'room': kwargs['room'],
             'status_in' : 0 if a['num_in'] is None else a['num_in'],
