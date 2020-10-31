@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SelectorComponent = (props) => {
   const classes = useStyles();
-  const {sensorValue, handleSensorValue} = props;
+  const {roomValue, handleRoomValue} = props;
 
   return (
     <FormControl className={classes.formControl}>
@@ -25,8 +25,8 @@ const SelectorComponent = (props) => {
       <Select
         labelId="simple-select-label"
         id="demo-simple-select"
-        value={sensorValue}
-        onChange={handleSensorValue}
+        value={roomValue}
+        onChange={handleRoomValue}
       >
         <MenuItem value="None">None</MenuItem>
         <MenuItem value="room_a">Room A</MenuItem>

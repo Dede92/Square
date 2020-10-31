@@ -14,13 +14,15 @@ export default (props) => {
   const classes = useStyles();
   const {room} = props;
   const {data, error, loading, refetch} = useQuery(GET_PEOPLE_COUNTER, {
-    variables: { room: room },
+    variables: { room: '' },
   });
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
 
   const handleOnClick = () => {
-    refetch()
+    refetch( {
+      variables: { room: room },
+    })
   }
     
   return (
