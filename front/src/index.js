@@ -7,14 +7,28 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Theme from './Theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { BrowserRouter } from 'react-router-dom';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client';
+import { createHttpLink } from "apollo-link-http";
+
+const link = createHttpLink({
+  uri: 'http://localhost:8000/graphql/',
+});
+
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  link,
+});
 
 const theme = createMuiTheme(Theme);
 ReactDOM.render(
   <BrowserRouter>
-      <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <App />
-      </MuiThemeProvider>
+    <ApolloProvider client={client}>
+        <MuiThemeProvider theme={theme}>
+          <CssBaseline />
+          <App />
+        </MuiThemeProvider>
+      </ApolloProvider>
   </BrowserRouter>
   , document.getElementById('root'));
 
