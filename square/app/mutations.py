@@ -5,21 +5,24 @@ from .types import PeopleCounterType
 class CreateSeat(graphene.Mutation):
     room = graphene.String(required=True, default_value=None)
     people_id = graphene.String(required=True, default_value=None)
-    status = graphene.Boolean()
+    status_out = graphene.Int()
+    status_in = graphene.Int()
 
     class Arguments:
         room = graphene.String()
         people_id = graphene.String()
-        status = graphene.Boolean()
+        status_in = graphene.Int()
+        status_out = graphene.Int()
 
-    def mutate(self, info, room, people_id, status):
-        peopleCounter = PeopleCounter(room=room, people_id=people_id, status=status)
+    def mutate(self, info, room, people_id, status_in, status_out):
+        peopleCounter = PeopleCounter(room=room, people_id=people_id, status_in=status_in, status_out=status_out)
         peopleCounter.save()
 
         return PeopleCounter(
             room = peopleCounter.room,
             people_id = peopleCounter.people_id,
-            status = peopleCounter.status,
+            status_in = peopleCounter.status_in,
+            status_out = peopleCounter.status_out,
         )
 
 class EditSeat(graphene.Mutation):

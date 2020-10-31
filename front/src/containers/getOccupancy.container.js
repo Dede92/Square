@@ -10,22 +10,26 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const adatper = (input) => {
+  return input.statusIn - input.statusOut
+} 
+
 export default (props) => {
   const classes = useStyles();
   const {room} = props;
   const {data, error, loading, refetch} = useQuery(GET_PEOPLE_COUNTER, {
-    variables: { room: '' },
+    variables: {room:''},
   });
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
 
   const handleOnClick = () => {
-    refetch({room: room})
+    refetch({room})
   }
     
   return (
     <React.Fragment>
-      <ButtonComponent data={data.getPeopleCounter} handleOnClick={handleOnClick}/>
+      <ButtonComponent data={adatper(data.getPeopleCounter)} handleOnClick={handleOnClick}/>
     </React.Fragment>
   )
 }
