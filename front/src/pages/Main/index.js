@@ -29,7 +29,7 @@ function MainPage() {
   
   const handleRoomValue = (value) => {
     setRoomValue(value.target.value)
-    editSeat({variables: {room: value.target.value, peopleId: user.id, status: 0}});
+    editSeat({variables: {room: value.target.value, peopleId: user.id, status: 1}});
   }
 
   useEffect(() => {
@@ -38,13 +38,14 @@ function MainPage() {
     createSeat({ variables: {room: roomValue, peopleId: id, status: 0}})
   }, []);
 
-  const handleBeforeUnload = () => {
+  const handleBeforeUnload = (event) => {
+    event.preventDefault()
     editSeat({variables: {room: roomValue, peopleId: user.id, status: 0}});
   }
 
   return (
     <React.Fragment>
-      <Beforeunload onBeforeunload={() => handleBeforeUnload} />
+      <Beforeunload onBeforeunload={(event) => handleBeforeUnload(event)} />
       <SelectorComponent roomValue={roomValue} handleRoomValue={handleRoomValue}/>
       <GetOccupancy room={roomValue}/>
     </React.Fragment>
