@@ -1,5 +1,5 @@
 from django.db import models
-
+import uuid
 # Create your models here.
 
 class Sensor(models.Model):
@@ -7,5 +7,6 @@ class Sensor(models.Model):
 
 
 class PeopleCounter(models.Model):
-    sensor = models.CharField(max_length=256)
-    name = models.CharField(max_length=256)
+    room = models.CharField(max_length=256)
+    people_id = models.CharField(max_length=256, primary_key=True, default=uuid.uuid4())
+    status = models.BooleanField(default=0)
