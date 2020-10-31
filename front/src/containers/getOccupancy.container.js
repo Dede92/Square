@@ -20,9 +20,7 @@ export default (props) => {
   if (error) return `Error! ${error.message}`;
 
   const handleOnClick = () => {
-    refetch( {
-      variables: { room: room },
-    })
+    refetch({room: room})
   }
     
   return (
