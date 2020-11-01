@@ -8,7 +8,7 @@ const adatper = (input) => {
 } 
 
 export default (props) => {
-  const {room} = props;
+  const {room, timestamp} = props;
   const {data, error, loading, refetch} = useQuery(GET_PEOPLE_COUNTER, {
     variables: {room:''},
   });
@@ -16,7 +16,10 @@ export default (props) => {
   if (error) return `Error! ${error.message}`;
 
   const handleOnClick = () => {
-    refetch({room})
+    refetch({
+      room,
+      atInstant: (timestamp !== null ? timestamp.utc().format() : undefined),
+    })
   }
     
   return (

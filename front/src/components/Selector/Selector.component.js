@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
@@ -14,8 +14,7 @@ const useStyles = makeStyles(() => ({
 
 const SelectorComponent = (props) => {
   const classes = useStyles();
-  const {roomValue, handleRoomValue} = props;
-  const [clearedDate, handleClearedDateChange] = useState(null);
+  const {roomValue, handleRoomValue, clearedDate, handleClearedDateChange} = props;
 
   return (
     <FormControl className={classes.formControl}>

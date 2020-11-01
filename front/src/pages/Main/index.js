@@ -23,6 +23,7 @@ const styles = (theme) => ({
 function MainPage() {
   const [roomValue, setRoomValue] = useState('stand_by')
   const [user, setUser] = useState({})
+  const [clearedDate, handleClearedDateChange] = useState(null);
   const [createSeat] = useMutation(ADD_PEOPLE_TO_ROOM);
   
   const handleRoomValue = (value) => {
@@ -45,8 +46,9 @@ function MainPage() {
   return (
     <React.Fragment>
       <Beforeunload onBeforeunload={(event) => handleBeforeUnload(event)} />
-      <SelectorComponent roomValue={roomValue} handleRoomValue={handleRoomValue}/>
-      <GetOccupancy room={roomValue}/>
+      <SelectorComponent roomValue={roomValue} handleRoomValue={handleRoomValue} 
+        clearedDate={clearedDate} handleClearedDateChange={handleClearedDateChange}/>
+      <GetOccupancy room={roomValue} timestamp={clearedDate}/>
     </React.Fragment>
   )
 }
