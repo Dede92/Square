@@ -24,6 +24,12 @@ module.exports = {
         "quotes": ["warn", "single"],
         "no-unused-vars": ["warn", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
         "react/prop-types": "off",
+        "react/display-name": [
+            "warn",
+            {
+              "ignoreTranspilerName": false
+            }
+          ],
     },
 
 };
