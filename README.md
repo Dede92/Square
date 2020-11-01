@@ -1,3 +1,6 @@
+## Requirement
+PSQL database
+
 ## Backend
 ```
 python square/manage.py runserver
