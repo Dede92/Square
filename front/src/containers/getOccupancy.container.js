@@ -5,9 +5,9 @@ import ButtonComponent from 'components/Button'
 import GET_PEOPLE_COUNTER from 'queries/getPeopleCounter';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
+  root: {
+    flexGrow: 1,
+  },
 }));
 
 const adatper = (input) => {
