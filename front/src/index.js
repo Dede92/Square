@@ -10,6 +10,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client';
 import { createHttpLink } from 'apollo-link-http';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import MomentUtils from '@date-io/moment'
 
 const link = createHttpLink({
   uri: 'http://localhost:8000/graphql/',
@@ -25,8 +27,10 @@ ReactDOM.render(
   <BrowserRouter>
     <ApolloProvider client={client}>
       <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <App />
+        <MuiPickersUtilsProvider utils={MomentUtils}>
+          <CssBaseline />
+          <App />
+        </MuiPickersUtilsProvider>
       </MuiThemeProvider>
     </ApolloProvider>
   </BrowserRouter>

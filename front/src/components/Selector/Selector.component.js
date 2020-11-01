@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import { DateTimePicker } from "@material-ui/pickers";
 
 const useStyles = makeStyles(() => ({
   formControl: {
@@ -14,6 +15,7 @@ const useStyles = makeStyles(() => ({
 const SelectorComponent = (props) => {
   const classes = useStyles();
   const {roomValue, handleRoomValue} = props;
+  const [clearedDate, handleClearedDateChange] = useState(null);
 
   return (
     <FormControl className={classes.formControl}>
@@ -29,6 +31,13 @@ const SelectorComponent = (props) => {
         <MenuItem value="room_b">Room B</MenuItem>
         <MenuItem value="room_c">Room C</MenuItem>
       </Select>
+      <DateTimePicker
+        clearable
+        value={clearedDate}
+        onChange={handleClearedDateChange}
+        helperText="Clear Initial State"
+      />
+
     </FormControl>
   )
 }
