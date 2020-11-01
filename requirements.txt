@@ -20,3 +20,4 @@ sqlparse==0.4.1
 termcolor==1.1.0
 Unidecode==1.1.1
 wasmer==0.4.1
+yapf==0.30.0
