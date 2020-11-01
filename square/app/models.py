@@ -2,6 +2,7 @@ from django.db import models
 from datetime import date
 # Create your models here.
 
+
 class PeopleCounter(models.Model):
     id = models.AutoField(primary_key=True)
     room = models.CharField(max_length=256)

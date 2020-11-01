@@ -1,10 +1,12 @@
 from graphene_django.types import DjangoObjectType
 from graphene import String, Int, ObjectType
-from .models import PeopleCounter 
+from .models import PeopleCounter
+
 
 class PeopleCounterType(DjangoObjectType):
     class Meta:
         model = PeopleCounter
+
 
 class PeopleCountType(ObjectType):
     room = String()

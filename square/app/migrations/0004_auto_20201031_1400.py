@@ -19,6 +19,10 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='peoplecounter',
             name='people_id',
-            field=models.CharField(default=uuid.UUID('d5852bcb-0a68-4d7d-93e3-52dd79f4a292'), max_length=256, primary_key=True, serialize=False),
+            field=models.CharField(
+                default=uuid.UUID('d5852bcb-0a68-4d7d-93e3-52dd79f4a292'),
+                max_length=256,
+                primary_key=True,
+                serialize=False),
         ),
     ]

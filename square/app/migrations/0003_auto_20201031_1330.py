@@ -22,7 +22,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='peoplecounter',
             name='people_id',
-            field=models.CharField(default=uuid.UUID('369085d4-f09f-43d4-84b8-8dba4493ee8f'), max_length=256, primary_key=True, serialize=False),
+            field=models.CharField(
+                default=uuid.UUID('369085d4-f09f-43d4-84b8-8dba4493ee8f'),
+                max_length=256,
+                primary_key=True,
+                serialize=False),
         ),
         migrations.AddField(
             model_name='peoplecounter',

@@ -11,12 +11,14 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.DeleteModel(
-            name='Sensor',
-        ),
+        migrations.DeleteModel(name='Sensor', ),
         migrations.AlterField(
             model_name='peoplecounter',
             name='people_id',
-            field=models.CharField(default=uuid.UUID('eaff7736-8baf-4818-bf52-7aa78f67f8fb'), max_length=256, primary_key=True, serialize=False),
+            field=models.CharField(
+                default=uuid.UUID('eaff7736-8baf-4818-bf52-7aa78f67f8fb'),
+                max_length=256,
+                primary_key=True,
+                serialize=False),
         ),
     ]

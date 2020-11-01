@@ -2,6 +2,7 @@ import graphene
 from .models import PeopleCounter
 from .types import PeopleCounterType
 
+
 class CreateSeat(graphene.Mutation):
     room = graphene.String(required=True, default_value=None)
     people_id = graphene.String(required=True, default_value=None)
@@ -15,15 +16,19 @@ class CreateSeat(graphene.Mutation):
         status_out = graphene.Int()
 
     def mutate(self, info, room, people_id, status_in, status_out):
-        peopleCounter = PeopleCounter(room=room, people_id=people_id, status_in=status_in, status_out=status_out)
+        peopleCounter = PeopleCounter(room=room,
+                                      people_id=people_id,
+                                      status_in=status_in,
+                                      status_out=status_out)
         peopleCounter.save()
 
         return PeopleCounter(
-            room = peopleCounter.room,
-            people_id = peopleCounter.people_id,
-            status_in = peopleCounter.status_in,
-            status_out = peopleCounter.status_out,
+            room=peopleCounter.room,
+            people_id=peopleCounter.people_id,
+            status_in=peopleCounter.status_in,
+            status_out=peopleCounter.status_out,
         )
+
 
 class EditSeat(graphene.Mutation):
     people_id = graphene.String()
@@ -45,10 +50,11 @@ class EditSeat(graphene.Mutation):
         poepleCounter.save()
 
         return EditSeat(
-            people_id = poepleCounter.people_id,
-            room = poepleCounter.room,
-            status = poepleCounter.status,
+            people_id=poepleCounter.people_id,
+            room=poepleCounter.room,
+            status=poepleCounter.status,
         )
+
 
 class Mutation(graphene.ObjectType):
     createSeat = CreateSeat.Field()
