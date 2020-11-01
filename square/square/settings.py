@@ -87,6 +87,7 @@ GRAPHENE = {
 
 WSGI_APPLICATION = 'square.wsgi.application'
 
+FIXTURE_DIRS = (os.path.join(BASE_DIR, 'app', 'tests', 'fixtures'), )
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
