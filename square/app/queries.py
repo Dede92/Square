@@ -21,8 +21,11 @@ class Query(graphene.ObjectType):
             q &= Q(created_at__lte=kwargs['atInstant'])
         a = PeopleCounter.objects.filter(q).aggregate(
             num_in=Sum('status_in'), num_out=Sum('status_out'))
+        status_in = 0 if a['num_in'] is None else a['num_in']
+        status_out = 0 if a['num_out'] is None else a['num_out']
         return {
             'room': kwargs['room'],
-            'status_in': 0 if a['num_in'] is None else a['num_in'],
-            'status_out': 0 if a['num_out'] is None else a['num_out'],
+            'status_in': status_in,
+            'status_out': status_out,
+            'occupancy': status_in - status_out,
         }

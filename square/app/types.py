@@ -12,3 +12,4 @@ class PeopleCountType(ObjectType):
     room = String()
     status_in = Int()
     status_out = Int()
+    occupancy = Int()
